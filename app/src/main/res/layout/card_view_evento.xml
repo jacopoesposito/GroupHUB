@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/card_view_evento">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:contentPadding="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        card_view:cardElevation="2dp"
+        card_view:cardUseCompatPadding="false">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/like_cardview"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/like"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/name_person"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:text="Nome Evento"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintStart_toEndOf="@id/like_cardview" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/luogo_evento_cardview"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="10dp"
+                android:text="Luogo Evento"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toBottomOf="@+id/name_person"
+                app:layout_constraintStart_toEndOf="@id/like_cardview" />
+
+            <TextView
+            android:id="@+id/data_evento_cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Data Evento"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintTop_toBottomOf="@+id/luogo_evento_cardview"
+            app:layout_constraintStart_toEndOf="@id/like_cardview" />
+
+            <Button
+                android:id="@+id/link_evento_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="10dp"
+                android:text="Link Esterno Recensioni"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@+id/data_evento_cardview"
+                app:layout_constraintStart_toEndOf="@id/like_cardview" />
+
+            <ImageView
+                android:id="@+id/map_luogo_evento"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/data_evento_cardview"
+                app:layout_constraintStart_toEndOf="@+id/luogo_evento_cardview"
+                app:srcCompat="@drawable/map" />
+
+            <TextView
+                android:id="@+id/scritta_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorBlack"
+                android:text="#Like:"
+                app:layout_constraintStart_toEndOf="@+id/data_evento_cardview"
+                app:layout_constraintTop_toBottomOf="@+id/map_luogo_evento" />
+
+            <TextView
+                android:id="@+id/numero_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/scritta_like"
+                app:layout_constraintTop_toBottomOf="@+id/map_luogo_evento" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
