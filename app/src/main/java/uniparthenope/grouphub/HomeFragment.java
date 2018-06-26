@@ -1,8 +1,10 @@
 package uniparthenope.grouphub;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
     TextView name_person, luogo_evento, data_evento, numero_like;
@@ -39,6 +44,7 @@ public class HomeFragment extends Fragment {
     public FirebaseRecyclerAdapter<Events, Events_View_Holder> mFirebaseAdapter;
     ProgressBar progressBar;
     LinearLayoutManager mLinearLayoutManager;
+    private List<Events> mEventsList = new ArrayList<>();
 
     public HomeFragment(){}
 
@@ -54,16 +60,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    for(DataSnapshot dSnapshot : ds.getChildren()) {
-                         Events eventsClass = dSnapshot.getValue(Events.class);
-                         nameEvento = eventsClass.getNameEvento();
-                         luogoEvento = eventsClass.getLuogoEvento();
-                         infoEvento = eventsClass.getInfoEvento();
-                         dataEvento = eventsClass.getDataEvento();
-                         likeEvento = eventsClass.getLike();
+                    for(DataSnapshot dSnapshot : ds.getChildren()) { //
+                        Events eventsClass = dSnapshot.getValue(Events.class);
+                        mEventsList.add(eventsClass);
+                        nameEvento = eventsClass.getNameEvento();
+                        luogoEvento = eventsClass.getLuogoEvento();
+                        infoEvento = eventsClass.getInfoEvento();
+                        dataEvento = eventsClass.getDataEvento();
+                        likeEvento = eventsClass.getLike();
 
-                        Log.d("TAG", "Nome Evento:"+nameEvento);
-                        }}}
+                        Log.d("TAG", "Nome Evento:" + mEventsList);
+                    }
+                    mFirebaseAdapter.notifyDataSetChanged();
+                }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -101,15 +111,27 @@ public class HomeFragment extends Fragment {
 
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Events, Events_View_Holder>
                 (Events.class, R.layout.card_view_evento, Events_View_Holder.class, myRef) {
+
+            /*@Override
+            public int getItemCount() {
+                return mEventsList.size();
+            }*/
+
+
             @Override
-            public void populateViewHolder(final Events_View_Holder viewHolder, Events model, final int position) {
+            public void populateViewHolder(final Events_View_Holder viewHolder, Events model, int position) {
 
 
+                for(position = 0; position <= 9; position++){
                 progressBar.setVisibility(View.INVISIBLE);
-                viewHolder.Person_Name(nameEvento);
-                viewHolder.Luogo_Evento(luogoEvento);
-                viewHolder.Data_Eventp(dataEvento);
-                viewHolder.Numero_Like(likeEvento);
+                //Events eventsClass = mEventsList.get(position);
+                viewHolder.Person_Name(mEventsList.get(position).getNameEvento());
+                viewHolder.Luogo_Evento(mEventsList.get(position).getLuogoEvento());
+                viewHolder.Data_Eventp(mEventsList.get(position).getDataEvento());
+                viewHolder.Numero_Like(mEventsList.get(position).getLike());
+                Log.d("TAG", "Populate" + mEventsList.get(position).getNameEvento());
+                Log.d("TAG", "Position 1:  "+ mEventsList.get(position));
+                }
 
 
             }
@@ -117,9 +139,10 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(mFirebaseAdapter);
     }
 
+
     public static class Events_View_Holder extends RecyclerView.ViewHolder {
         private final TextView name_person, luogo_evento, data_evento, numero_like;
-        private final LinearLayout layout;
+        private final ConstraintLayout layout;
         private final ImageView like, map;
         private final Button info;
         final LinearLayout.LayoutParams params;
@@ -133,7 +156,7 @@ public class HomeFragment extends Fragment {
             like = (ImageView)itemView.findViewById(R.id.like_cardview);
             map = (ImageView)itemView.findViewById(R.id.map_luogo_evento);
             info = (Button) itemView.findViewById(R.id.link_evento_cardview);
-            layout = (LinearLayout)itemView.findViewById(R.id.card_view_evento);
+            layout = (ConstraintLayout) itemView.findViewById(R.id.card_view_evento);
             params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 

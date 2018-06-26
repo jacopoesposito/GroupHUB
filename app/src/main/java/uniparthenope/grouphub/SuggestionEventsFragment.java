@@ -108,13 +108,13 @@ public class SuggestionEventsFragment extends Fragment implements OnMapReadyCall
     }
 
 
-    private void initMap(){
+    /*private void initMap(){
 
 
         Log.d(TAG, "initMap: Inizializzo mappa");
         SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_suggestion));
         mapFragment.getMapAsync(SuggestionEventsFragment.this);
-    }
+    }*/
 
     private void getLocationPermission(){
         Log.d(TAG, "getLocationPermission: richiedo i permessi");
@@ -126,7 +126,7 @@ public class SuggestionEventsFragment extends Fragment implements OnMapReadyCall
             if(ContextCompat.checkSelfPermission(getActivity(),
                     COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
                 mLocationPermissionsGranted = true;
-                initMap();
+                //initMap();
             }else{
                 requestPermissions(
                         permissions,
@@ -156,8 +156,7 @@ public class SuggestionEventsFragment extends Fragment implements OnMapReadyCall
                     }
                     Log.d(TAG, "onRequestPermissionsResult: permessi concessi");
                     mLocationPermissionsGranted = true;
-                    //initialize our map
-                    initMap();
+                    //initMap();
                 }
             }
         }

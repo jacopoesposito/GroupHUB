@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "1002892962156",
+    "firebase_url": "https://grouphub-it.firebaseio.com",
+    "project_id": "grouphub-it",
+    "storage_bucket": "grouphub-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002892962156:android:3a6337ce6fe54c36",
+        "android_client_info": {
+          "package_name": "uniparthenope.grouphub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002892962156-njtl6epnedk9u88pv828mgh30p4vveb5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uniparthenope.grouphub",
+            "certificate_hash": "cae5e584090fbde03707f02bea69c5d5da9a47ac"
+          }
+        },
+        {
+          "client_id": "1002892962156-r25ehe0rcl36ivqde1hc7pc4fis46c6h.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1002892962156-r25ehe0rcl36ivqde1hc7pc4fis46c6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ4xWWZFNwnrBmtmoGtMw1Abx1lthMPd4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002892962156-r25ehe0rcl36ivqde1hc7pc4fis46c6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
